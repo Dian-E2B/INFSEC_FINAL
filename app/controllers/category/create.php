@@ -11,10 +11,8 @@
       ];
 
       $query = "INSERT INTO category (name) VALUES (:name)";
-      
-      if(!empty(insert($query, $data))) {
-          echo 'Data Inserted!';
-      }
+      echo (!empty(insert($query, $data))) ? "Category added successfully." : 'Category not added.';
+
     }
 
     if($_POST["operation"] == "Edit") {
@@ -25,10 +23,9 @@
       ];
       
       $query = 'UPDATE category SET name = :name WHERE id = :id';
+      echo (!empty(update($query, $data))) ? 'Category name have been updated.' : 'Update Failed.';
 
-      if(!empty(update($query, $data))) {
-        echo 'Data Updated!';
-      }
+  
     }
   }
 

@@ -28,6 +28,11 @@
     <div class="container-fluid">
       <div class="block-header">
         <h2>CATEGORY</h2>
+        <!-- <div class="js-sweetalert">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <button class="btn btn-primary waves-effect" data-type="success">CLICK ME</button>
+          </div>
+        </div> -->
       </div>
 
       <!-- Exportable Table -->
@@ -129,14 +134,14 @@
             contentType: false,
             processData: false,
             success: function (data) {
-              alert(data);
+              swal("Success!", data, "success");
               $('#form-category')[0].reset();
               $('#modal-category').modal('hide');
               dataTable.ajax.reload();
             }
           });
         } else {
-          alert("Both Fields are Required");
+          alert("Fields are required");
         }
       });
 
