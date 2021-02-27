@@ -186,7 +186,7 @@
             $('#name').val(data.name);
             $('#modal-title').text("Edit Category");
             $('#id').val(id);
-            $('#submit').val("EDIT");
+            $('#submit').val("SAVE CHANGES");
             $('#operation').val("Edit");
 
           }
