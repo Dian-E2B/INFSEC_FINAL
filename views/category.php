@@ -107,7 +107,7 @@
       var dataTable = $('#dt-category').DataTable({
         "processing": true,
         "serverSide": true,
-        "order": [],
+        "order": [[0, 'desc']],
         "ajax": {
           url: "../app/controllers/category/view.php",
           type: "POST"
