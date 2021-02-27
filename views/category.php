@@ -26,21 +26,12 @@
 
   <section class="content">
     <div class="container-fluid">
-      <div class="block-header">
-        <h2>CATEGORY</h2>
-        <!-- <div class="js-sweetalert">
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <button class="btn btn-primary waves-effect" data-type="success">CLICK ME</button>
-          </div>
-        </div> -->
-      </div>
-
-      <!-- Exportable Table -->
+      <!-- Category Datatable -->
       <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="card">
             <div class="header">
-              <h2>List of Categories</h2>
+              <h2>Category</h2>
               <a href="#" class="header-dropdown m-r-5" id="action-add" data-toggle="modal"
                 data-target="#modal-category">
                 <i class="material-icons">add</i>
@@ -48,7 +39,7 @@
             </div>
             <div class="body">
               <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover" id="dt-category">
+                <table class="table table-bordered table-hover" id="dt-category">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -74,20 +65,40 @@
             <h4 class="modal-title" id="modal-title">New Category</h4>
           </div>
           <div class="modal-body">
+            <label for="name">Name</label>
             <div class="form-group">
-              <label class="form-label">Name</label>
-              <div class="form-line">
-                <input type="text" id="name" name="name" class="form-control">
+              <div class="form-line" id="field-name">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Category Name">
               </div>
+              <label class="error" id="error-message"></label>
             </div>
+
           </div>
           <div class="modal-footer">
             <input type="hidden" name="id" id="id">
             <input type="hidden" name="operation" id="operation">
-            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-            <input type="submit" class="btn btn-info waves-effect" name="submit" id="submit" value="Add">
+            <input type="button" class="btn btn-link waves-effect" data-dismiss="modal" value="CLOSE">
+            <input type="submit" class="btn btn-info waves-effect" name="submit" id="submit" value="ADD">
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>
+        </div>
+        <div class="modal-body">
+          <p>Once deleted, you will not be able to recover this category.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancel</button>
+          <button type="button" id="btn-delete" class="btn btn-danger waves-effect">Yes</button>
+        </div>
       </div>
     </div>
   </div>
@@ -97,17 +108,20 @@
 
   <script>
     $(document).ready(function () {
+
       $('#action-add').click(function () {
         $('#form-category')[0].reset();
         $('#modal-title').text("New Category");
-        $('#submit').val("Add");
+        $('#submit').val("ADD");
         $('#operation').val("Add");
       });
 
       var dataTable = $('#dt-category').DataTable({
         "processing": true,
         "serverSide": true,
-        "order": [[0, 'desc']],
+        "order": [
+          [0, 'desc']
+        ],
         "ajax": {
           url: "../app/controllers/category/view.php",
           type: "POST"
@@ -126,23 +140,35 @@
         event.preventDefault();
         var name = $('#name').val();
 
-        if (name != '') {
-          $.ajax({
-            url: "../app/controllers/category/create.php",
-            method: 'POST',
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success: function (data) {
-              swal("Success!", data, "success");
+        $.ajax({
+          url: "../app/controllers/category/create.php",
+          method: 'POST',
+          data: new FormData(this),
+          contentType: false,
+          processData: false,
+          success: function (data) {
+            if (data && data != "" && data != "add" && data != "edit") {
+              $("#error-message").show();
+              $('#error-message').text(data);
+
+            } else {
+              var message = '';
+              if (data == 'add') {
+                message = 'Data has been saved successfully.';
+              } else if (data == 'edit') {
+                message = 'Data has been updated successfully.';
+              }
+
               $('#form-category')[0].reset();
               $('#modal-category').modal('hide');
               dataTable.ajax.reload();
+
+              swal("Success!", message, "success");
+
             }
-          });
-        } else {
-          alert("Fields are required");
-        }
+
+          }
+        });
       });
 
 
@@ -160,16 +186,18 @@
             $('#name').val(data.name);
             $('#modal-title').text("Edit Category");
             $('#id').val(id);
-            $('#submit').val("Edit");
+            $('#submit').val("EDIT");
             $('#operation').val("Edit");
+
           }
         })
       });
 
-
       $(document).on('click', '.delete', function () {
         var id = $(this).attr("id");
-        if (confirm("Are you sure you want to delete this?")) {
+
+        $('#modal-delete').modal('show');
+        $("#btn-delete").click(function () {
           $.ajax({
             url: "../app/controllers/category/delete.php",
             method: "POST",
@@ -177,13 +205,19 @@
               id: id
             },
             success: function (data) {
-              alert(data);
+            $('#modal-delete').modal('hide');
+              swal("Success!", data, "success");
               dataTable.ajax.reload();
             }
           });
-        } else {
-          return false;
-        }
+        });
+
+      });
+
+      $("#modal-category").on("hidden.bs.modal", function () {
+        $("#error-message").hide();
+
+
       });
 
     });
