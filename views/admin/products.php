@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <title>Admin | Suppliers</title>
+  <title>Admin | Products</title>
 
   <!-- links -->
   <?php include '../../public/admin/sections/links.php'; ?>
@@ -26,26 +26,29 @@
 
   <section class="content">
     <div class="container-fluid">
-      <!-- Supplier Datatable -->
+      <!-- Products Datatable -->
       <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="card">
             <div class="header">
-              <h2>Suppliers</h2>
+              <h2>Products</h2>
               <a href="#" class="header-dropdown m-r-5" id="action-add" data-toggle="modal"
-                data-target="#modal-supplier">
+                data-target="#modal-product">
                 <i class="material-icons">add</i>
               </a>
             </div>
             <div class="body">
               <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dt-supplier">
+                <table class="table table-bordered table-hover" id="dt-products">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Phone Number</th>
+                      <th>Image</th>
+                      <th>Product Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Sold</th>
+                      <th>Supplier</th>
+                      <th>Category</th>
                       <th class="text-center">Actions</th>
                     </tr>
                   </thead>
@@ -59,37 +62,61 @@
   </section>
 
   <!-- Modal -->
-  <div class="modal fade" id="modal-supplier" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
+  <div class="modal fade" id="modal-product" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <form method="post" id="form-supplier">
+        <form method="post" id="form-product">
           <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">New Supplier</h4>
+            <h4 class="modal-title" id="modal-title">New Products</h4>
           </div>
           <div class="modal-body">
-            <label for="name">Name</label>
+            <label class="form-label">Name</label>
             <div class="form-group">
               <div class="form-line">
-                <input type="text" id="name" name="name" class="form-control">
+                <input type="text" id="name" name="name" placeholder="Enter product name" class="form-control" required>
               </div>
             </div>
-
-            <label for="name">Address</label>
             <div class="form-group">
+              <label class="form-label">Description</label>
               <div class="form-line">
-                <input type="text" id="address" name="address" class="form-control">
+                <textarea rows="1" name="description" placeholder="Enter description"
+                  class="form-control no-resize auto-growth"
+                  style="overflow: hidden; overflow-wrap: break-word; height: 35px;" required></textarea>
               </div>
-              <div class="help-info">(Optional)</div>
             </div>
-
-            <label for="name">Phone Number</label>
             <div class="form-group">
+              <label class="form-label">Price</label>
               <div class="form-line">
-                <input type="text" id="phone-number" name="phone-number" class="form-control"
-                  placeholder="Ex. +639123789168">
+                <input type="text" name="price" placeholder="Enter price" class="form-control" required>
               </div>
             </div>
+            <div class="form-group">
+              <label class="form-label">Quantity</label>
+              <div class="form-line">
+                <input type="text" name="quantity" placeholder="Enter quantity" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select name="category" class="form-control show-tick">
+                <?php
+                // require '../../app/config/functions.php';
 
+                  $query = "SELECT * FROM category";
+                  $rows = selectAll($query);
+                  foreach ($rows as $row): ?>
+                <option value="<?php echo $row['id']; ?>">
+                  <?php echo $row['name']; ?>
+                </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label class="form-label">Image</label>
+              <input type="file" name="photo" class="form-control">
+            </div>
           </div>
           <div class="modal-footer">
             <input type="hidden" name="id" id="id">
@@ -123,7 +150,7 @@
   <!-- scripts -->
   <?php include '../../public/admin/sections/scripts.php'; ?>
 
-  <script src="../../public/admin/js/ajax/supplier.js"></script>
+  <script src="../../public/admin/js/ajax/products.js"></script>
 
 </body>
 

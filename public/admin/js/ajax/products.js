@@ -7,14 +7,14 @@ $(document).ready(function () {
     $('#operation').val("Add");
   });
 
-  var dataTable = $('#dt-supplier').DataTable({
+  var dataTable = $('#dt-suppliers').DataTable({
     "processing": true,
     "serverSide": true,
     "order": [
       [0, 'desc']
     ],
     "ajax": {
-      url: "../../app/controllers/supplier/view.php",
+      url: "../../app/controllers/products/view.php",
       type: "POST"
     },
     "columnDefs": [{
@@ -32,7 +32,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     $.ajax({
-      url: "../../app/controllers/supplier/create.php",
+      url: "../../app/controllers/products/create.php",
       method: 'POST',
       data: new FormData(this),
       contentType: false,
@@ -69,7 +69,7 @@ $(document).ready(function () {
   $(document).on('click', '.update', function () {
     var id = $(this).attr("id");
     $.ajax({
-      url: "../../app/controllers/supplier/edit.php",
+      url: "../../app/controllers/products/edit.php",
       method: "POST",
       data: {
         id: id
@@ -97,7 +97,7 @@ $(document).ready(function () {
     $('#modal-delete').modal('show');
     $("#btn-delete").click(function () {
       $.ajax({
-        url: "../../app/controllers/supplier/delete.php",
+        url: "../../app/controllers/products/delete.php",
         method: "POST",
         data: {
           id: id
@@ -112,11 +112,5 @@ $(document).ready(function () {
 
   });
 
-
-
-  // $("#modal-category").on("hidden.bs.modal", function () {
-  //   $("#error-message").hide();
-
-  // });
 
 });
