@@ -73,32 +73,31 @@
             <label class="form-label">Name</label>
             <div class="form-group">
               <div class="form-line">
-                <input type="text" id="name" name="name" placeholder="Enter product name" class="form-control" required>
+                <input type="text" id="name" name="name" class="form-control">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Description</label>
               <div class="form-line">
-                <textarea rows="1" name="description" placeholder="Enter description"
-                  class="form-control no-resize auto-growth"
-                  style="overflow: hidden; overflow-wrap: break-word; height: 35px;" required></textarea>
+                <textarea rows="1" id="description" name="description" class="form-control no-resize auto-growth"
+                  style="overflow: hidden; overflow-wrap: break-word; height: 35px;"></textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Price</label>
               <div class="form-line">
-                <input type="text" name="price" placeholder="Enter price" class="form-control" required>
+                <input type="text" id="price" name="price" class="form-control">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Quantity</label>
               <div class="form-line">
-                <input type="text" name="quantity" placeholder="Enter quantity" class="form-control" required>
+                <input type="text" id="quantity" name="quantity" class="form-control">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Category</label>
-              <select name="category" class="form-control show-tick">
+              <select id="category" name="category" class="form-control show-tick">
                 <?php
                   require '../../app/config/functions.php';
                   foreach (selectAll('SELECT * FROM category') as $row): ?>
@@ -110,7 +109,7 @@
             </div>
             <div class="form-group">
               <label class="form-label">Supplier</label>
-              <select name="supplier" class="form-control show-tick">
+              <select id="supplier" name="supplier" class="form-control show-tick">
                 <?php
                   foreach (selectAll('SELECT * FROM supplier') as $row): ?>
                 <option value="<?php echo $row['id']; ?>">
@@ -121,7 +120,7 @@
             </div>
             <div class="form-group">
               <label class="form-label">Image</label>
-              <input type="file" name="photo" class="form-control">
+              <input type="file" id="image" name="image" class="form-control">
             </div>
           </div>
           <div class="modal-footer">

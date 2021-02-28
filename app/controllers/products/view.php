@@ -3,7 +3,6 @@
   include_once ('../../config/connection.php');
   include_once ('../../config/functions.php');
 
-  // $query = 'SELECT * FROM products ';
   $query = 'SELECT products.id, products.image, products.name, products.price, products.QuantityInStock, supplier.name as "supplier_name", category.name as "category_name" FROM products INNER JOIN category ON products.category_id = category.id INNER JOIN supplier ON products.supplier_id = supplier.id ';
 
   //search query
@@ -57,10 +56,10 @@
   $total_rows = rowCount('SELECT * FROM products');
 
   $output = array(
-      "draw" => intval($_POST["draw"]) ,
-      "recordsTotal" => $total_rows,
-      "recordsFiltered" => $total_rows,
-      "data" => $data
+      "draw"              => intval($_POST["draw"]) ,
+      "recordsTotal"      => $total_rows,
+      "recordsFiltered"   => $total_rows,
+      "data"              => $data
   );
 
   echo json_encode($output);

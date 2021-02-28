@@ -4,7 +4,7 @@
         if(isset($_FILES[$image_name])) {
             $extension = explode('.', $_FILES[$image_name]['name']);
             $new_name = rand() . '.' . $extension[1];
-            $destination = '../../../upload/' . $new_name;
+            $destination = '../../../public/admin/images/products/' . $new_name;
             move_uploaded_file($_FILES[$image_name]['tmp_name'], $destination);
             return $new_name;
         }

@@ -13,20 +13,29 @@ $(document).ready(function () {
     "serverSide": true,
     "order": [],
     "ajax": {
-     url: "../../app/controllers/products/view.php",
-     type: "POST"
+      url: "../../app/controllers/products/view.php",
+      type: "POST"
     },
     "columnDefs": [{
       "targets": [0, 7],
       "orderable": false,
       "className": "text-center",
-    }, ],
+    },],
 
   });
 
 
   $(document).on('submit', '#form-product', function (event) {
     event.preventDefault();
+
+    var extension = $('#image').val().split('.').pop().toLowerCase();
+    if (extension != '') {
+      if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+        alert("Invalid Image File");
+        $('#image').val('');
+        return false;
+      }
+    }
 
     $.ajax({
       url: "../../app/controllers/products/create.php",
@@ -49,7 +58,7 @@ $(document).ready(function () {
           swal("Error!", data, "error");
 
         } else {
-          swal("Success!", message, "success");
+          swal("Success!", data, "success");
 
         }
 
