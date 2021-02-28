@@ -123,14 +123,14 @@ if (isset($_POST['edit-product'])) {
                                         <?php
                                     try {
 
-                                        $query = "SELECT products.id, products.photo, products.name, products.price, products.QuantityInStock, products.QuantitySold, supplier.name as 'supplier_name', category.name as 'category_name' FROM products INNER JOIN category ON products.category_id = category.id INNER JOIN supplier ON products.supplier_id = supplier.id";
+                                        $query = "SELECT products.id, products.image, products.name, products.price, products.QuantityInStock, products.QuantitySold, supplier.name as 'supplier_name', category.name as 'category_name' FROM products INNER JOIN category ON products.category_id = category.id INNER JOIN supplier ON products.supplier_id = supplier.id";
                                         $rows = $function->selectAll($query);
                                         foreach ($rows as $row) { ?>
 
                                         <tr>
                                             <td><?php echo $row['id']; ?></td>
                                             <td class="text-center">
-                                                <img src="../images/products/<?php echo $row['photo']; ?>" width="70"
+                                                <img src="../images/products/<?php echo $row['image']; ?>" width="70"
                                                     height="70" />
                                             </td>
                                             <td><?php echo strlen($row['name']) > 15 ? substr($row['name'],0,15) . "..." : $row['name']; ?></td>

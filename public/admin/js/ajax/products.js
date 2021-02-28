@@ -1,34 +1,31 @@
 $(document).ready(function () {
 
   $('#action-add').click(function () {
-    $('#form-supplier')[0].reset();
-    $('#modal-title').text("New Supplier");
+    $('#form-product')[0].reset();
+    $('#modal-title').text("New Product");
     $('#submit').val("ADD");
     $('#operation').val("Add");
   });
 
-  var dataTable = $('#dt-suppliers').DataTable({
+
+  var dataTable = $('#dt-products').DataTable({
     "processing": true,
     "serverSide": true,
-    "order": [
-      [0, 'desc']
-    ],
+    "order": [],
     "ajax": {
-      url: "../../app/controllers/products/view.php",
-      type: "POST"
+     url: "../../app/controllers/products/view.php",
+     type: "POST"
     },
     "columnDefs": [{
-      "targets": [4],
+      "targets": [0, 7],
       "orderable": false,
       "className": "text-center",
-    },
-
-    ],
+    }, ],
 
   });
 
 
-  $(document).on('submit', '#form-supplier', function (event) {
+  $(document).on('submit', '#form-product', function (event) {
     event.preventDefault();
 
     $.ajax({
@@ -56,8 +53,8 @@ $(document).ready(function () {
 
         }
 
-        $('#form-supplier')[0].reset();
-        $('#modal-supplier').modal('hide');
+        $('#form-product')[0].reset();
+        $('#modal-product').modal('hide');
         dataTable.ajax.reload();
 
       }
@@ -76,11 +73,11 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (data) {
-        $('#modal-supplier').modal('show');
+        $('#modal-product').modal('show');
         $('#name').val(data.name);
-        $('#address').val(data.address);
-        $('#phone-number').val(data.phone_number);
-        $('#modal-title').text("Edit Supplier");
+        // $('#address').val(data.address);
+        // $('#phone-number').val(data.phone_number);
+        $('#modal-title').text("Edit Product");
         $('#id').val(id);
         $('#submit').val("SAVE CHANGES");
         $('#operation').val("Edit");

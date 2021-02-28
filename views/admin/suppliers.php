@@ -122,7 +122,6 @@
 
   <!-- scripts -->
   <?php include '../../public/admin/sections/scripts.php'; ?>
-
   <script src="../../public/admin/js/ajax/suppliers.js"></script>
 
 </body>

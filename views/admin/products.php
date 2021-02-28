@@ -43,10 +43,10 @@
                   <thead>
                     <tr>
                       <th>Image</th>
+                      <th>ID</th>
                       <th>Product Name</th>
                       <th>Price</th>
                       <th>Quantity</th>
-                      <th>Sold</th>
                       <th>Supplier</th>
                       <th>Category</th>
                       <th class="text-center">Actions</th>
@@ -67,7 +67,7 @@
       <div class="modal-content">
         <form method="post" id="form-product">
           <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">New Products</h4>
+            <h4 class="modal-title" id="modal-title">New Product</h4>
           </div>
           <div class="modal-body">
             <label class="form-label">Name</label>
@@ -100,19 +100,25 @@
               <label class="form-label">Category</label>
               <select name="category" class="form-control show-tick">
                 <?php
-                // require '../../app/config/functions.php';
-
-                  $query = "SELECT * FROM category";
-                  $rows = selectAll($query);
-                  foreach ($rows as $row): ?>
+                  require '../../app/config/functions.php';
+                  foreach (selectAll('SELECT * FROM category') as $row): ?>
                 <option value="<?php echo $row['id']; ?>">
                   <?php echo $row['name']; ?>
                 </option>
                 <?php endforeach; ?>
               </select>
             </div>
-
-
+            <div class="form-group">
+              <label class="form-label">Supplier</label>
+              <select name="supplier" class="form-control show-tick">
+                <?php
+                  foreach (selectAll('SELECT * FROM supplier') as $row): ?>
+                <option value="<?php echo $row['id']; ?>">
+                  <?php echo $row['name']; ?>
+                </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
             <div class="form-group">
               <label class="form-label">Image</label>
               <input type="file" name="photo" class="form-control">
@@ -149,7 +155,6 @@
 
   <!-- scripts -->
   <?php include '../../public/admin/sections/scripts.php'; ?>
-
   <script src="../../public/admin/js/ajax/products.js"></script>
 
 </body>
