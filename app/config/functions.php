@@ -10,6 +10,18 @@
         }
     }
 
+	function setID($column_id, $table_name) {
+        include('connection.php');
+		$query = "SELECT MAX($column_id) FROM $table_name";
+		$count_row = $connect->query($query)->fetchColumn() + 1;
+		
+		if ($count_row == 1) {
+			$count_row = 100001;
+		}
+		return $count_row;
+
+	}
+
     function selectAll($query) {
         include('connection.php');
         $statement = $connect->prepare($query);

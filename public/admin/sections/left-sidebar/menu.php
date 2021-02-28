@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="suppliers.php">
+                        <a href="supplier.php">
                             <i class="material-icons">local_shipping</i>
                             <span>Suppliers</span>
                         </a>

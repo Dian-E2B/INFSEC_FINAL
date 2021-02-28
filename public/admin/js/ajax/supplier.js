@@ -1,24 +1,24 @@
 $(document).ready(function () {
 
   $('#action-add').click(function () {
-    $('#form-category')[0].reset();
-    $('#modal-title').text("New Category");
+    $('#form-supplier')[0].reset();
+    $('#modal-title').text("New Supplier");
     $('#submit').val("ADD");
     $('#operation').val("Add");
   });
 
-  var dataTable = $('#dt-category').DataTable({
+  var dataTable = $('#dt-supplier').DataTable({
     "processing": true,
     "serverSide": true,
     "order": [
       [0, 'desc']
     ],
     "ajax": {
-      url: "../../app/controllers/category/view.php",
+      url: "../../app/controllers/supplier/view.php",
       type: "POST"
     },
     "columnDefs": [{
-      "targets": [2],
+      "targets": [4],
       "orderable": false,
       "className": "text-center",
     },
@@ -28,36 +28,37 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('submit', '#form-category', function (event) {
+  $(document).on('submit', '#form-supplier', function (event) {
     event.preventDefault();
-    // var name = $('#name').val();
 
     $.ajax({
-      url: "../../app/controllers/category/create.php",
+      url: "../../app/controllers/supplier/create.php",
       method: 'POST',
       data: new FormData(this),
       contentType: false,
       processData: false,
       success: function (data) {
-        if (data && data != "" && data != "add" && data != "edit") {
-          $("#error-message").show();
-          $('#error-message').text(data);
+
+        var message = '';
+        if (data == 'add') {
+          message = 'Data has been saved successfully.';
+        }
+
+        if (data == 'edit') {
+          message = 'Data has been updated successfully.';
+        }
+
+        if (data == 'Something went wrong.') {
+          swal("Error!", data, "error");
 
         } else {
-          var message = '';
-          if (data == 'add') {
-            message = 'Data has been saved successfully.';
-          } else if (data == 'edit') {
-            message = 'Data has been updated successfully.';
-          }
-
-          $('#form-category')[0].reset();
-          $('#modal-category').modal('hide');
-          dataTable.ajax.reload();
-
           swal("Success!", message, "success");
 
         }
+
+        $('#form-supplier')[0].reset();
+        $('#modal-supplier').modal('hide');
+        dataTable.ajax.reload();
 
       }
     });
@@ -68,16 +69,18 @@ $(document).ready(function () {
   $(document).on('click', '.update', function () {
     var id = $(this).attr("id");
     $.ajax({
-      url: "../../app/controllers/category/edit.php",
+      url: "../../app/controllers/supplier/edit.php",
       method: "POST",
       data: {
         id: id
       },
       dataType: "json",
       success: function (data) {
-        $('#modal-category').modal('show');
+        $('#modal-supplier').modal('show');
         $('#name').val(data.name);
-        $('#modal-title').text("Edit Category");
+        $('#address').val(data.address);
+        $('#phone-number').val(data.phone_number);
+        $('#modal-title').text("Edit Supplier");
         $('#id').val(id);
         $('#submit').val("SAVE CHANGES");
         $('#operation').val("Edit");
@@ -94,7 +97,7 @@ $(document).ready(function () {
     $('#modal-delete').modal('show');
     $("#btn-delete").click(function () {
       $.ajax({
-        url: "../../app/controllers/category/delete.php",
+        url: "../../app/controllers/supplier/delete.php",
         method: "POST",
         data: {
           id: id
@@ -111,9 +114,9 @@ $(document).ready(function () {
 
 
 
-  $("#modal-category").on("hidden.bs.modal", function () {
-    $("#error-message").hide();
+  // $("#modal-category").on("hidden.bs.modal", function () {
+  //   $("#error-message").hide();
 
-  });
+  // });
 
 });
