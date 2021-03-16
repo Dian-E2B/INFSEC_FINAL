@@ -58,7 +58,7 @@ $(document).ready(function () {
           swal("Error!", data, "error");
 
         } else {
-          swal("Success!", data, "success");
+          swal("Success!", message, "success");
 
         }
 
@@ -89,8 +89,6 @@ $(document).ready(function () {
         $('#quantity').val(data.quantity);
         $('#category').val(data.category).change();
         $('#supplier').val(data.supplier).change();
-        $('#user_uploaded_image').html(data.user_image);
-
 
         $('#modal-title').text("Edit Product");
         $('#id').val(id);

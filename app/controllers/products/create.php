@@ -61,10 +61,11 @@
           'name'              => $_POST["name"],
           'description'       => $_POST["description"],
           'price'             => $_POST["price"],
-          'QuantityInStock'   => $_POST["quantity"],
+          'quantity'   => $_POST["quantity"],
           'category_id'       => $_POST["category"],
           'supplier_id'       => $_POST["supplier"],
-          'image'             => $image
+          'image'             => $image,
+          'id'                => $_POST['id']
         ];
 
       $query = "UPDATE products SET name = :name, description = :description, price = :price, QuantityInStock = :quantity, category_id = :category_id, supplier_id = :supplier_id, image = :image WHERE id = :id";

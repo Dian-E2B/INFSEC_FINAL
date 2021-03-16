@@ -17,12 +17,12 @@
     // $category =findRow($query, $row["category_id"]);
     // $output["category"] = $category['name'];
 
-    if($row["image"] != '') {
-      $output['user_image'] = '<img src="../../public/admin/images/products/' . $row["image"] . '" class="img-thumbnail" width="50" height="35" /><input type="hidden" name="hidden_user_image" value="' . $row["image"] . '" />';
+    // if($row["image"] != '') {
+    //   $output['image'] = $row["image"];
 
-    } else {
-      $output['user_image'] = '<input type="hidden" name="hidden_user_image" value="" />';
-    }
+    // } else {
+    //   $output['image'] = '<input type="hidden" name="image" value="" />';
+    // }
 
     echo json_encode($output);
   }

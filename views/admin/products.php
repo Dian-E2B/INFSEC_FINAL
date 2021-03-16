@@ -122,7 +122,6 @@
             <div class="form-group">
               <label class="form-label">Image</label>
               <input type="file" id="image" name="image" class="form-control">
-              <span id="user_uploaded_image"></span>
 
             </div>
           </div>
