@@ -35,6 +35,7 @@
 
         $data = [
           'name'              => $_POST["name"],
+          'description'       => $_POST["description"],
           'price'             => $_POST["price"],
           'QuantityInStock'   => $_POST["quantity"],
           'category_id'       => $_POST["category"],
@@ -42,24 +43,34 @@
           'image'             => $image
         ];
     
-        $query = "INSERT INTO products (name, price, QuantityInStock, category_id, supplier_id, image, date_added) VALUES (:name, :price, :QuantityInStock, :category_id, :supplier_id, :image, now())";
+        $query = "INSERT INTO products (name, description, price, QuantityInStock, category_id, supplier_id, image, date_added) VALUES (:name, :description, :price, :QuantityInStock, :category_id, :supplier_id, :image, now())";
         echo (!empty(insert($query, $data))) ? 'add' : 'hehe';
 
       }
 
-      // if ($_POST["operation"] == "Edit") {
+      if ($_POST["operation"] == "Edit") {
 
-      //   $data = [
-      //     'name' => $_POST['name'],
-      //     'address' => $_POST['address'],
-      //     'phone_number' => $_POST['phone-number'],
-      //     'id' => $_POST['id']
-      //   ];
+        $image = '';
+        if($_FILES["image"]["name"] != '') {
+          $image = setUploadImage('image');
+        } else {
+          $image = 'default.jpg';
+        }
 
-      //   $query = 'UPDATE supplier SET name = :name, address = :address, phone_number = :phone_number WHERE id = :id';
-      //   echo (!empty(update($query, $data))) ? 'edit' : 'hehe';
+        $data = [
+          'name'              => $_POST["name"],
+          'description'       => $_POST["description"],
+          'price'             => $_POST["price"],
+          'QuantityInStock'   => $_POST["quantity"],
+          'category_id'       => $_POST["category"],
+          'supplier_id'       => $_POST["supplier"],
+          'image'             => $image
+        ];
 
-      // }
+      $query = "UPDATE products SET name = :name, description = :description, price = :price, QuantityInStock = :quantity, category_id = :category_id, supplier_id = :supplier_id, image = :image WHERE id = :id";
+        echo (!empty(update($query, $data))) ? 'edit' : 'hehe';
+
+      }
 
     }
   }

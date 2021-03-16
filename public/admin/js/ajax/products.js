@@ -84,8 +84,14 @@ $(document).ready(function () {
       success: function (data) {
         $('#modal-product').modal('show');
         $('#name').val(data.name);
-        // $('#address').val(data.address);
-        // $('#phone-number').val(data.phone_number);
+        $('#description').val(data.description);
+        $('#price').val(data.price);
+        $('#quantity').val(data.quantity);
+        $('#category').val(data.category).change();
+        $('#supplier').val(data.supplier).change();
+        $('#user_uploaded_image').html(data.user_image);
+
+
         $('#modal-title').text("Edit Product");
         $('#id').val(id);
         $('#submit').val("SAVE CHANGES");

@@ -97,9 +97,10 @@
             </div>
             <div class="form-group">
               <label class="form-label">Category</label>
-              <select id="category" name="category" class="form-control show-tick">
+              <select name="category" id="category" class="form-control show-tick">
                 <?php
                   require '../../app/config/functions.php';
+                  $product = findRow("SELECT * FROM products WHERE id = :id", $_POST['id']);
                   foreach (selectAll('SELECT * FROM category') as $row): ?>
                 <option value="<?php echo $row['id']; ?>">
                   <?php echo $row['name']; ?>
@@ -121,6 +122,8 @@
             <div class="form-group">
               <label class="form-label">Image</label>
               <input type="file" id="image" name="image" class="form-control">
+              <span id="user_uploaded_image"></span>
+
             </div>
           </div>
           <div class="modal-footer">
