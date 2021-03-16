@@ -109,22 +109,20 @@
   </section>
 
   <!-- Modal -->
-  <div class="modal fade" id="modal-category" tabindex="-1" role="dialog">
+  <div class="modal fade" id="modal-products" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
-        <form method="post" id="form-category">
+        <form method="post" id="form-products">
           <div class="modal-header">
-            <h4 class="modal-title" id="modal-title">New Category</h4>
+            <h4 class="modal-title text-center" id="modal-title">Quantity</h4>
           </div>
           <div class="modal-body">
-            <label for="name">Name</label>
             <div class="form-group">
-              <div class="form-line" id="field-name">
-                <input type="text" id="name" name="name" class="form-control" placeholder="Category Name">
+              <div class="form-line" id="field-quantity">
+                <input type="text" id="quantity" name="quantity" class="form-control" placeholder="Quantity">
               </div>
               <label class="error" id="error-message"></label>
             </div>
-
           </div>
           <div class="modal-footer">
             <input type="hidden" name="id" id="id">
@@ -133,6 +131,24 @@
             <input type="submit" class="btn btn-info waves-effect" name="submit" id="submit" value="ADD">
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>
+        </div>
+        <div class="modal-body">
+          <p>Once deleted, you will not be able to recover this data.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancel</button>
+          <button type="button" id="btn-delete" class="btn btn-danger waves-effect">Yes</button>
+        </div>
       </div>
     </div>
   </div>

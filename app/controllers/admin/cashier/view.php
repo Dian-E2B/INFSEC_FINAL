@@ -45,7 +45,7 @@
         $sub_array[] = $row["price"];
         $sub_array[] = $row["QuantityInStock"];
 
-        $sub_array[] = '<button type="button" name="add-product" id="' . $row['id'] . '" class="btn btn-info btn-xs waves-effect add-product"><i class="material-icons" style="font-size:1.6rem;">add</i></button>';
+        $sub_array[] = '<button type="button" name="update" id="' . $row['id'] . '" class="btn btn-warning btn-xs waves-effect update"><i class="material-icons" style="font-size:1.6rem;">mode_edit</i></button>';
         $data[] = $sub_array;
 
   }
