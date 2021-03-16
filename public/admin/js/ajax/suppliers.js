@@ -14,7 +14,7 @@ $(document).ready(function () {
       [0, 'desc']
     ],
     "ajax": {
-      url: "../../app/controllers/suppliers/view.php",
+      url: "../../app/controllers/admin/suppliers/view.php",
       type: "POST"
     },
     "columnDefs": [{
@@ -32,7 +32,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     $.ajax({
-      url: "../../app/controllers/suppliers/create.php",
+      url: "../../app/controllers/admin/suppliers/create.php",
       method: 'POST',
       data: new FormData(this),
       contentType: false,
@@ -69,7 +69,7 @@ $(document).ready(function () {
   $(document).on('click', '.update', function () {
     var id = $(this).attr("id");
     $.ajax({
-      url: "../../app/controllers/suppliers/edit.php",
+      url: "../../app/controllers/admin/suppliers/edit.php",
       method: "POST",
       data: {
         id: id
@@ -97,7 +97,7 @@ $(document).ready(function () {
     $('#modal-delete').modal('show');
     $("#btn-delete").click(function () {
       $.ajax({
-        url: "../../app/controllers/suppliers/delete.php",
+        url: "../../app/controllers/admin/suppliers/delete.php",
         method: "POST",
         data: {
           id: id

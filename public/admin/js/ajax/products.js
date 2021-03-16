@@ -13,7 +13,7 @@ $(document).ready(function () {
     "serverSide": true,
     "order": [],
     "ajax": {
-      url: "../../app/controllers/products/view.php",
+      url: "../../app/controllers/admin/products/view.php",
       type: "POST"
     },
     "columnDefs": [{
@@ -38,7 +38,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-      url: "../../app/controllers/products/create.php",
+      url: "../../app/controllers/admin/products/create.php",
       method: 'POST',
       data: new FormData(this),
       contentType: false,
@@ -75,7 +75,7 @@ $(document).ready(function () {
   $(document).on('click', '.update', function () {
     var id = $(this).attr("id");
     $.ajax({
-      url: "../../app/controllers/products/edit.php",
+      url: "../../app/controllers/admin/products/edit.php",
       method: "POST",
       data: {
         id: id
@@ -107,7 +107,7 @@ $(document).ready(function () {
     $('#modal-delete').modal('show');
     $("#btn-delete").click(function () {
       $.ajax({
-        url: "../../app/controllers/products/delete.php",
+        url: "../../app/controllers/admin/products/delete.php",
         method: "POST",
         data: {
           id: id

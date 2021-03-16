@@ -1,7 +1,7 @@
 <?php
 
-  include_once ('../../config/connection.php');
-  include_once ('../../config/functions.php');
+  include_once ('../../../config/connection.php');
+  include_once ('../../../config/functions.php');
 
   date_default_timezone_set('Asia/Manila');
 

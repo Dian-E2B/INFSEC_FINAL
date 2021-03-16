@@ -1,7 +1,7 @@
 <?php
 
-  include_once ('../../config/connection.php');
-  include_once ('../../config/functions.php');
+  include_once ('../../../config/connection.php');
+  include_once ('../../../config/functions.php');
 
   if (isset($_POST['operation'])) {
     if (empty($_POST['name']) || empty($_POST['phone-number'])) {

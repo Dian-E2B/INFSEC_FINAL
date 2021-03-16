@@ -14,7 +14,7 @@ $(document).ready(function () {
     "serverSide": true,
     "order": [],
     "ajax": {
-      url: "../../app/controllers/cashier/view.php",
+      url: "../../app/controllers/admin/cashier/view.php",
       type: "POST"
     },
     "columnDefs": [{
@@ -45,7 +45,7 @@ $(document).ready(function () {
       "orderable": false,
       "className": "text-center",
     },],
-    
+
   });
 
 

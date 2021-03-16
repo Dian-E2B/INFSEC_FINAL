@@ -1,7 +1,7 @@
 <?php
 
-  include_once ('../../config/connection.php');
-  include_once ('../../config/functions.php');
+    include_once ('../../../config/connection.php');
+    include_once ('../../../config/functions.php');
 
   $query = 'SELECT products.id, products.image, products.name, products.price, products.QuantityInStock, supplier.name as "supplier_name", category.name as "category_name" FROM products INNER JOIN category ON products.category_id = category.id INNER JOIN supplier ON products.supplier_id = supplier.id ';
 
