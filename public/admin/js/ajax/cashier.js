@@ -1,17 +1,19 @@
 $(document).ready(function () {
 
   //Products datatable
-  var dataTable = $('#dt-products').DataTable({
+  var dataTableProducts = $('#dt-products').DataTable({
     "autoWidth": false,
     "processing": true,
     "serverSide": true,
-    "order": [],
+    "order": [
+      [0, 'desc']
+    ],
     "ajax": {
       url: "../../app/controllers/admin/cashier/view.php",
       type: "POST"
     },
     "columnDefs": [{
-      "targets": [0, 5],
+      "targets": [4],
       "orderable": false,
       "className": "text-center",
     },],
@@ -20,7 +22,7 @@ $(document).ready(function () {
 
 
   //Cart datatable
-  var dataTable = $('#dt-cart').DataTable({
+  var dataTableCart = $('#dt-cart').DataTable({
     "processing": true,
     "serverSide": true,
     "order": [
@@ -54,7 +56,7 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (data) {
-        if (data && data != "" && data != "add product") {
+        if (data && data != "" && data != "add to cart") {
           $("#error-message").show();
           $('#error-message').text(data);
 
@@ -62,9 +64,11 @@ $(document).ready(function () {
 
           $('#form-products')[0].reset();
           $('#modal-products').modal('hide');
-          dataTable.ajax.reload();
 
-          if (data == 'add product') {
+          dataTableProducts.ajax.reload();
+          dataTableCart.ajax.reload();
+
+          if (data == 'add to cart') {
             swal("Success!", 'Product has been successfully added to cart.', "success");
 
           }
@@ -76,7 +80,7 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('click', '.update', function () {
+  $(document).on('click', '.add-to-cart', function () {
     var id = $(this).attr("id");
     $.ajax({
       url: "../../app/controllers/admin/cashier/edit.php",
@@ -88,8 +92,8 @@ $(document).ready(function () {
       success: function (data) {
         $('#modal-products').modal('show');
         $('#id').val(id);
-        $('#submit').val("ADD");
-        $('#operation').val("Edit");
+        $('#submit').val("Add to Cart");
+        $('#operation').val("Add to Cart");
 
       }
     })

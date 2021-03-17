@@ -1,63 +1,55 @@
 <?php
+    include_once ('../../../config/connection.php');
+    include_once ('../../../config/functions.php');
 
-  include_once ('../../../config/connection.php');
-  include_once ('../../../config/functions.php');
+    $request = $_REQUEST;
+    $column = array(
+        0 => 'id',
+        1 => 'name',
+        2 => 'price',
+        3 => 'QuantityInStock'
+    );
 
-  $query = 'SELECT * FROM products ';
-
-  //search query
-  if (isset($_POST["search"]["value"])) {
-      $query .= 'WHERE id LIKE "%' . $_POST["search"]["value"] . '%" ';
-      $query .= 'OR name LIKE "%' . $_POST["search"]["value"] . '%" ';
-      $query .= 'OR price LIKE "%' . $_POST["search"]["value"] . '%" ';
-  }
-
-  //order query
-  if (isset($_POST["order"])) {
-      $query .= 'ORDER BY ' . $_POST['order']['0']['column'] . ' ' . $_POST['order']['0']['dir'] . ' ';
-  } else {
-      $query .= 'ORDER BY id DESC ';
-  }
-
-  //limit query
-  if ($_POST["length"] != - 1) {
-      $query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-  }
-
-  $data = array();
-
-  //fetch all rows
-  $rows = selectAll($query);
-
-  foreach ($rows as $row) {
-
-    //set image
-    $image = '';
-    if ($row["image"] != '') {
-        $image = '<img src="../../public/admin/images/products/' . $row["image"] . '" class="img-thumbnail" width="50" height="35" />';
+    $query = "SELECT * FROM products WHERE QuantityInStock != 0";
+    
+    //search query
+    if (!empty($request['search']['value'])) {
+        $query.= " AND id LIKE '" . $request['search']['value'] . "%' ";
+        $query.= " OR name LIKE '" . $request['search']['value'] . "%'";
     }
+
+    //order query
+    if(isset($_POST['order'])) {
+        $query.= " ORDER BY " . $column[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'] . "  LIMIT " . $request['start'] . "  ," . $request['length'] . "  ";
+    } else {
+      $query .= 'ORDER BY id DESC';
+    }
+    
+    $data = array();
+    //fetch all rows
+    $rows = selectAll($query);
+    foreach ($rows as $row) {
 
         //declare and initialize sub_array variable
         $sub_array = array();
-        $sub_array[] = $image;
         $sub_array[] = $row["id"];
         $sub_array[] = $row["name"];
         $sub_array[] = $row["price"];
         $sub_array[] = $row["QuantityInStock"];
 
-        $sub_array[] = '<button type="button" name="update" id="' . $row['id'] . '" class="btn btn-warning btn-xs waves-effect update"><i class="material-icons" style="font-size:1.6rem;">mode_edit</i></button>';
+        $sub_array[] = '<button type="button" name="add-to-cart" id="' . $row['id'] . '" class="btn btn-info btn-xs waves-effect add-to-cart"><i class="material-icons" style="font-size:1.6rem;">add</i></button>';
         $data[] = $sub_array;
 
-  }
+    }
 
-  $output = array();
-  $total_rows = rowCount('SELECT * FROM products');
+    $output = array();
+    $total_rows = rowCount('SELECT * FROM products WHERE QuantityInStock != 0');
 
-  $output = array(
-      "draw"              => intval($_POST["draw"]) ,
-      "recordsTotal"      => $total_rows,
-      "recordsFiltered"   => $total_rows,
-      "data"              => $data
-  );
+    $output = array(
+        "draw"              => intval($_POST["draw"]), 
+        "recordsTotal"      => $total_rows, 
+        "recordsFiltered"   => $total_rows, 
+        "data"              => $data,
+      );
 
-  echo json_encode($output);
+    echo json_encode($output);

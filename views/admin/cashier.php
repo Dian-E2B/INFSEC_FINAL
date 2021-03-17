@@ -48,7 +48,6 @@
                     <table class="table table-bordered table-hover" id="dt-products">
                       <thead>
                         <tr>
-                          <th>Image</th>
                           <th>ID</th>
                           <th>Product Name</th>
                           <th>Price</th>
@@ -128,7 +127,7 @@
             <input type="hidden" name="id" id="id">
             <input type="hidden" name="operation" id="operation">
             <input type="button" class="btn btn-link waves-effect" data-dismiss="modal" value="CLOSE">
-            <input type="submit" class="btn btn-info waves-effect" name="submit" id="submit" value="ADD">
+            <input type="submit" class="btn btn-info waves-effect" name="submit" id="submit" value="Add to Cart">
           </div>
         </form>
       </div>

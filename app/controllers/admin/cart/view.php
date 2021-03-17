@@ -14,7 +14,7 @@
     
     //search query
     if (!empty($request['search']['value'])) {
-        $query.= " AND cart.cart_id LIKE '" . $request['search']['value'] . "%' ";
+        $query.= " AND id LIKE '" . $request['search']['value'] . "%' ";
         $query.= " OR products.name LIKE '" . $request['search']['value'] . "%' AND cart_code = -1";
     }
 
@@ -22,7 +22,7 @@
     if(isset($_POST['order'])) {
         $query.= " ORDER BY " . $column[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'] . "  LIMIT " . $request['start'] . "  ," . $request['length'] . "  ";
     } else {
-      $query .= 'ORDER BY cart.cart_id DESC ';
+      $query .= 'ORDER BY cart.cart_id DESC';
     }
     
     $data = array();

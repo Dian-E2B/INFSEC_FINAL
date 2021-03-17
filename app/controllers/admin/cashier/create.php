@@ -12,7 +12,7 @@ include_once ('../../../config/functions.php');
     
     } else {
 
-    if ($_POST["operation"] == "Edit") {
+    if ($_POST["operation"] == "Add to Cart") {
 
       $data = [
         'product_id' => $_POST['id'],
@@ -22,7 +22,16 @@ include_once ('../../../config/functions.php');
       ];
 
       $query = "INSERT INTO cart (product_id, quantity, cart_code) VALUES (:product_id, :quantity, :cart_code)";
-      echo (!empty(insert($query, $data))) ? 'add product' : 'hehe';
+      echo (!empty(insert($query, $data))) ? 'add to cart' : 'hehe';
+
+      $data = [
+        'id' => $_POST['id'],
+        'quantity' => $_POST['quantity'],
+      ];
+
+      $query = "UPDATE products SET QuantityInStock = (QuantityInStock - :quantity) WHERE id = :id";
+      update($query, $data);
+
 
     }
     
