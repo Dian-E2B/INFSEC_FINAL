@@ -10,7 +10,7 @@
         3 => 'total'
     );
 
-    $query = "SELECT SUM(quantity) as 'quantity', SUM((products.price * cart.quantity)) AS 'total',cart.cart_id, products.id, products.name, products.price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE cart_code = -1";
+    $query = "SELECT cart.cart_id, products.id, products.name, products.price, cart.quantity, (products.price * cart.quantity) AS 'total' FROM cart INNER JOIN products ON cart.product_id = products.id WHERE cart_code = -1";
     
     //search query
     if (!empty($request['search']['value'])) {
@@ -20,9 +20,9 @@
 
     //order query
     if(isset($_POST['order'])) {
-        $query.= " GROUP BY id ORDER BY " . $column[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'] . "  LIMIT " . $request['start'] . "  ," . $request['length'] . "  ";
+        $query.= " ORDER BY " . $column[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'] . "  LIMIT " . $request['start'] . "  ," . $request['length'] . "  ";
     } else {
-      $query .= 'GROUP BY id ORDER BY cart.cart_id DESC ';
+      $query .= 'ORDER BY cart.cart_id DESC ';
     }
     
     $data = array();
@@ -37,7 +37,7 @@
         $sub_array[] = $row["price"];
         $sub_array[] = $row["quantity"];
         $sub_array[] = number_format($row['total'], 2);
-        $sub_array[] = '<button type="button" name="update" id="' . $row['id'] . '" class="btn btn-info btn-xs waves-effect update"><i class="material-icons" style="font-size:1.6rem;">remove</i></button> <button type="button" name="delete" id="' . $row['id'] . '" class="btn btn-info btn-xs waves-effect delete"><i class="material-icons" style="font-size:1.6rem;">add</i></button> <button type="button" name="delete" id="' . $row['id'] . '" class="btn btn-danger btn-xs waves-effect delete"><i class="material-icons" style="font-size:1.6rem;">delete</i></button>';
+        $sub_array[] = '<button type="button" name="minus" id="' . $row['id'] . '" class="btn btn-info btn-xs waves-effect minus"><i class="material-icons" style="font-size:1.6rem;">remove</i></button> <button type="button" name="add" id="' . $row['id'] . '" class="btn btn-info btn-xs waves-effect add"><i class="material-icons" style="font-size:1.6rem;">add</i></button>';
 
         $cart_total += floatval($row["total"]);
         $data[] = $sub_array;

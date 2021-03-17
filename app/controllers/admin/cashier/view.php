@@ -15,7 +15,7 @@
     //search query
     if (!empty($request['search']['value'])) {
         $query.= " AND id LIKE '" . $request['search']['value'] . "%' ";
-        $query.= " OR name LIKE '" . $request['search']['value'] . "%'";
+        $query.= " OR name LIKE '" . $request['search']['value'] . "%' AND QuantityInStock != 0";
     }
 
     //order query

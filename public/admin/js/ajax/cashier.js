@@ -106,28 +106,39 @@ $(document).ready(function () {
     })
   });
 
-
-  $(document).on('click', '.delete', function () {
+  $(document).on('click', '.minus', function () {
     var id = $(this).attr("id");
 
-    $('#modal-delete').modal('show');
-    $("#btn-delete").click(function () {
-      $.ajax({
-        url: "../../app/controllers/admin/cart/delete.php",
-        method: "POST",
-        data: {
-          id: id
-        },
-        success: function (data) {
-          $('#modal-delete').modal('hide');
-          swal("Success!", data, "success");
-          dataTableCart.ajax.reload();
-        }
-      });
-    });
+    $.ajax({
+      url: "../../app/controllers/admin/cart/minus.php",
+      method: "POST",
+      data: {
+        id: id
+      },
+      success: function (data) {
 
+        dataTableProducts.ajax.reload();
+        dataTableCart.ajax.reload();
+      }
+    })
   });
 
+  $(document).on('click', '.add', function () {
+    var id = $(this).attr("id");
+
+    $.ajax({
+      url: "../../app/controllers/admin/cart/add.php",
+      method: "POST",
+      data: {
+        id: id
+      },
+      success: function (data) {
+
+        dataTableProducts.ajax.reload();
+        dataTableCart.ajax.reload();
+      }
+    })
+  });
 
 
   $("#modal-products").on("hidden.bs.modal", function () {

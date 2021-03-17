@@ -21,8 +21,17 @@ include_once ('../../../config/functions.php');
       
       ];
 
-      $query = "INSERT INTO cart (product_id, quantity, cart_code) VALUES (:product_id, :quantity, :cart_code)";
-      echo (!empty(insert($query, $data))) ? 'add to cart' : 'hehe';
+      $row = findRow("SELECT * FROM cart WHERE product_id = :id AND cart_code = -1", $_POST['id']);
+
+      if (empty($row)) {
+        $query = "INSERT INTO cart (product_id, quantity, cart_code) VALUES (:product_id, :quantity, :cart_code)";
+        echo (!empty(insert($query, $data))) ? 'add to cart' : 'hehe';
+      }
+
+      if (!empty($row)) {
+        $query = "UPDATE cart SET quantity = (quantity + :quantity) WHERE product_id = :product_id AND cart_code = :cart_code";
+        echo (!empty(update($query, $data))) ? 'add to cart' : 'hehe';
+      }
 
       $data = [
         'id' => $_POST['id'],

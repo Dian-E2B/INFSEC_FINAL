@@ -133,24 +133,6 @@
     </div>
   </div>
 
-  <!-- Delete Modal -->
-  <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Are you sure?</h4>
-        </div>
-        <div class="modal-body">
-          <p>Once deleted, you will not be able to recover this data.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancel</button>
-          <button type="button" id="btn-delete" class="btn btn-danger waves-effect">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- scripts -->
   <?php include '../../public/admin/sections/scripts.php'; ?>
   <script src="../../public/admin/js/ajax/cashier.js"></script>
