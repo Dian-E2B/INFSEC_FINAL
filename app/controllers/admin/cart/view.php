@@ -10,7 +10,7 @@
         3 => 'total'
     );
 
-    $query = "SELECT cart.cart_id, products.id, products.name, products.price, cart.quantity, (products.price * cart.quantity) AS 'total' FROM cart INNER JOIN products ON cart.product_id = products.id WHERE cart_code = -1";
+    $query = "SELECT SUM(quantity) as 'quantity', SUM((products.price * cart.quantity)) AS 'total',cart.cart_id, products.id, products.name, products.price FROM cart INNER JOIN products ON cart.product_id = products.id WHERE cart_code = -1";
     
     //search query
     if (!empty($request['search']['value'])) {
@@ -20,9 +20,9 @@
 
     //order query
     if(isset($_POST['order'])) {
-        $query.= " ORDER BY " . $column[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'] . "  LIMIT " . $request['start'] . "  ," . $request['length'] . "  ";
+        $query.= " GROUP BY id ORDER BY " . $column[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'] . "  LIMIT " . $request['start'] . "  ," . $request['length'] . "  ";
     } else {
-      $query .= 'ORDER BY cart.cart_id DESC';
+      $query .= 'GROUP BY id ORDER BY cart.cart_id DESC ';
     }
     
     $data = array();

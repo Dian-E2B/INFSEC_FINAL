@@ -33,7 +33,14 @@ $(document).ready(function () {
       type: "POST"
     },
     drawCallback: function (settings) {
-      $('#total_order').html(settings.json.cart_total);
+      $('#cart-total').html(settings.json.cart_total);
+
+      var cart_total = $('#cart-total').text();
+      if (cart_total.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1') > 0) {
+        $('#proceed-to-checkout').removeAttr('disabled');
+      } else {
+        $('#proceed-to-checkout').attr('disabled', 'disabled');
+      }
     },
     "columnDefs": [{
       "targets": [4],
@@ -100,7 +107,33 @@ $(document).ready(function () {
   });
 
 
+  $(document).on('click', '.delete', function () {
+    var id = $(this).attr("id");
 
+    $('#modal-delete').modal('show');
+    $("#btn-delete").click(function () {
+      $.ajax({
+        url: "../../app/controllers/admin/cart/delete.php",
+        method: "POST",
+        data: {
+          id: id
+        },
+        success: function (data) {
+          $('#modal-delete').modal('hide');
+          swal("Success!", data, "success");
+          dataTableCart.ajax.reload();
+        }
+      });
+    });
+
+  });
+
+
+
+  $("#modal-products").on("hidden.bs.modal", function () {
+    $("#error-message").hide();
+
+  });
 
 
 });

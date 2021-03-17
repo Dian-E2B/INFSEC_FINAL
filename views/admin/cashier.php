@@ -35,13 +35,13 @@
               <div class="panel-heading" role="tab" id="headingOne_17">
                 <h4 class="panel-title">
                   <a role="button" data-toggle="collapse" data-parent="#accordion_17" href="#collapseOne_17"
-                    aria-expanded="false" aria-controls="collapseOne_17" class="">
+                    aria-expanded="true" aria-controls="collapseOne_17" class="">
                     <i class="material-icons">view_list</i>
                     Products
                   </a>
                 </h4>
               </div>
-              <div id="collapseOne_17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_17"
+              <div id="collapseOne_17" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_17"
                 aria-expanded="true">
                 <div class="panel-body">
                   <div class="table-responsive">
@@ -89,14 +89,13 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-t-30">
-                      <p class="pull-right">
+                      <p class="pull-right" id="p-cart-total">
                         <b>Cart Total</b>
-                        <span id="total_order"></span>
+                        <span id="cart-total"></span>
                       </p>
                     </div>
-                    <a href="javascript:void(0)" id="proceed-to-checkout" class="btn btn-primary pull-right"
-                      disabled>Proceed to Checkout
-                    </a>
+                    <input type="button" id="proceed-to-checkout" class="btn btn-primary pull-right"
+                      value="Proceed to Checkout" disabled>
                   </div>
                 </div>
               </div>
