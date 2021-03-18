@@ -73,6 +73,13 @@
 		return $statement->execute($data);
 	}
 
+    function login($query, $data) {
+        include('connection.php');
+		$statement = $connect->prepare($query);
+		$statement->execute($data);
+		return $statement->fetch();
+
+	}
 
  
 

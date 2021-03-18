@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-indigo">
+          <div class="info-box bg-light-green">
             <div class="icon">
               <i class="material-icons">local_shipping</i>
             </div>
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-purple">
+          <div class="info-box bg-cyan">
             <div class="icon">
               <i class="material-icons">show_chart</i>
             </div>
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-teal">
+          <div class="info-box bg-purple">
             <div class="icon">
               <i class="material-icons">group</i>
             </div>
@@ -146,7 +146,7 @@
         <!-- Salable Products -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           <div class="card">
-            <div class="body bg-teal">
+            <div class="body bg-light-green">
               <div class="font-bold m-b--35">Salable Products</div>
               <ul class="dashboard-stat-list">
                 <?php
@@ -168,7 +168,7 @@
         <!-- Answered Tickets -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           <div class="card">
-            <div class="body bg-indigo">
+            <div class="body bg-cyan">
               <div class="font-bold m-b--35">Unsalable Products</div>
               <ul class="dashboard-stat-list">
                 <?php
