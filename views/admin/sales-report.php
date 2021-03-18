@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="theme-teal">
+<body class="theme-purple">
   <!-- Page Loader -->
   <?php include '../../public/admin/sections/page-loader.php'; ?>
 

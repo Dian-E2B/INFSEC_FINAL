@@ -1,8 +1,8 @@
-            <div class="legal">
-                <div class="copyright">
-                    &copy; 2016 - 2020 <a href="#">NICEGOOD</a>
-                </div>
-                <div class="version">
-                    <b>Version: </b> 1.0.5
-                </div>
-            </div>
+<div class="legal">
+    <div class="copyright">
+        &copy; 2020 - 2021 <a href="#">Sprilikitiwi</a>
+    </div>
+    <div class="version">
+        <b>Version: </b> 1.0.0
+    </div>
+</div>

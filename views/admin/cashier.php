@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="theme-teal">
+<body class="theme-purple">
   <!-- Page Loader -->
   <?php include '../../public/admin/sections/page-loader.php'; ?>
 
@@ -31,7 +31,7 @@
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="panel-group" id="accordion_17" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-col-teal">
+            <div class="panel panel-col-purple">
               <div class="panel-heading" role="tab" id="headingOne_17">
                 <h4 class="panel-title">
                   <a role="button" data-toggle="collapse" data-parent="#accordion_17" href="#collapseOne_17"
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </div>
-            <div class="panel panel-col-teal">
+            <div class="panel panel-col-purple">
               <div class="panel-heading" role="tab" id="headingTwo_17">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_17"
