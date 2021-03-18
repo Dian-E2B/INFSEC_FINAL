@@ -41,8 +41,8 @@
                   </a>
                 </h4>
               </div>
-              <div id="collapseOne_17" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_17"
-                aria-expanded="true">
+              <div id="collapseOne_17" class="panel-collapse collapse in" role="tabpanel"
+                aria-labelledby="headingOne_17" aria-expanded="true">
                 <div class="panel-body">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover" id="dt-products">
@@ -94,8 +94,9 @@
                         <span id="cart-total"></span>
                       </p>
                     </div>
-                    <input type="button" id="proceed-to-checkout" class="btn btn-primary pull-right"
-                      value="Proceed to Checkout" disabled>
+                    <a href="checkout.php" id="proceed-to-checkout" class="btn btn-primary pull-right" disabled>
+                      Proceed to Checkout
+                    </a>
                   </div>
                 </div>
               </div>
