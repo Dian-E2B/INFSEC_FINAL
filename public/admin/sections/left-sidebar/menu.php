@@ -46,9 +46,9 @@
             </ul>
         </li>
         <li>
-            <a href="backup-restore.php">
-                <i class="material-icons">settings_backup_restore</i>
-                <span>Backup/Restore</span>
+            <a href="settings.php">
+                <i class="material-icons">settings</i>
+                <span>Settings</span>
             </a>
         </li>
     </ul>
