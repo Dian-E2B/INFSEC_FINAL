@@ -1,4 +1,4 @@
-<?php require 'app/controllers/login.php'; ?>
+<?php require '../../app/controllers/client/login.php'; ?>
 
 <!doctype html>
 <html lang="zxx">
@@ -10,13 +10,13 @@
     <title>Login | XYT Online Store</title>
 
     <!-- Links -->
-    <?php include 'public/client/sections/links.php'; ?>
+    <?php include '../../public/client/sections/links.php'; ?>
 
 </head>
 
 <body class="bg-white">
     <!--::header part start::-->
-    <?php include 'public/client/sections/header.php'; ?>
+    <?php include '../../public/client/sections/header.php'; ?>
 
     <!--================Home Banner Area =================-->
     <!-- breadcrumb start-->
@@ -46,7 +46,7 @@
                             <h2>New to our Shop?</h2>
                             <p>There are advances being made in science and technology
                                 everyday, and a good example of this is the</p>
-                            <a href="register.html" class="btn_3">Create an Account</a>
+                            <a href="register.php" class="btn_3">Create an Account</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <div class="login_part_form_iner">
                             <h3>Welcome Back ! <br>
                                 Please Sign in now</h3>
-                            <form class="row contact_form" method="post" novalidate="novalidate">
+                            <form class="row contact_form" method="post">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="email" class="form-control" name="email-address" placeholder="Email"
                                         required>
@@ -83,13 +83,13 @@
     <!--================login_part end =================-->
 
     <!--::footer_part start::-->
-    <?php include 'public/client/sections/footer.php'; ?>
+    <?php include '../../public/client/sections/footer.php'; ?>
 
 
     <!-- jquery plugins here-->
     <!-- jquery -->
     <!-- Links -->
-    <?php include 'public/client/sections/scripts.php'; ?>
+    <?php include '../../public/client/sections/scripts.php'; ?>
 
 </body>
 

@@ -3,7 +3,7 @@
     <div class="row align-items-center justify-content-center">
       <div class="col-lg-11">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index.html"> <img src="public/client/img/logo.png" alt="logo"> </a>
+          <a class="navbar-brand" href="../../index.php"> <img src="../../public/client/img/logo.png" alt="logo"> </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="menu_icon"><i class="fas fa-bars"></i></span>
@@ -12,16 +12,16 @@
           <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="../../index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="login.php">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="register.html">Create Account</a>
+                <a class="nav-link" href="register.php">Create Account</a>
               </li>
             </ul>
           </div>

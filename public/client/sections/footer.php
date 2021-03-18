@@ -3,18 +3,7 @@
     <div class="row justify-content-between">
       <div class="col-sm-6 col-lg-2">
         <div class="single_footer_part">
-          <h4>Category</h4>
-          <ul class="list-unstyled">
-            <li><a href="#">Male</a></li>
-            <li><a href="#">Female</a></li>
-            <li><a href="#">Shoes</a></li>
-            <li><a href="#">Fashion</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-2">
-        <div class="single_footer_part">
-          <h4>Company</h4>
+          <h4>XYT Company</h4>
           <ul class="list-unstyled">
             <li><a href="">About</a></li>
             <li><a href="">News</a></li>
@@ -28,8 +17,8 @@
           <h4>Address</h4>
           <ul class="list-unstyled">
             <li><a href="#">200, Green block, NewYork</a></li>
-            <li><a href="#">+10 456 267 1678</a></li>
-            <li><span>contact89@winter.com</span></li>
+            <li><a href="#">+63 912 345 6789</a></li>
+            <li><span>sprilikitiwi@xyt.com</span></li>
           </ul>
         </div>
       </div>

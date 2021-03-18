@@ -1,6 +1,6 @@
 <?php
-  include_once ('app/config/connection.php');
-  include_once ('app/config/functions.php');
+  include_once ('../../app/config/connection.php');
+  include_once ('../../app/config/functions.php');
 
   session_start();
 
@@ -23,9 +23,9 @@
       $_SESSION['is_logged_in'] = true;
       
       if ($_SESSION['user']['type'] == 0) {
-        header('Location:index.php');
+        header('Location:../../index.php');
       } elseif ($_SESSION['user']['type'] == 1) {
-        header('Location:views/admin');
+        header('Location:../../views/admin');
       }
 
     } else {
