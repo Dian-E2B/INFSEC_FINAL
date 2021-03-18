@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   //settings
   $(document).on('click', '#apply-changes', function () {
-    var checkbox_discounts = $('#discounts-checkbox').is(":checked");
+    var discounts = $('#discounts-checkbox').is(":checked");
     var type = $('#type').is(":checked");
     var user_id = $('#name').val();
 
@@ -14,7 +14,7 @@ $(document).ready(function () {
       method: "POST",
       dataType: "json",
       data: {
-        checkbox_discounts: checkbox_discounts,
+        discounts: discounts,
         type: type,
         user_id: user_id
       },
@@ -23,8 +23,6 @@ $(document).ready(function () {
         $('#vat').text(data.vat);
         $('#discounts').text(data.discounts);
         $('#total').text(data.total);
-        alert(data.user_id);
-
 
         swal("Success!", 'Changes have been applied.', "success");
 
@@ -77,24 +75,27 @@ $(document).ready(function () {
 
 
   //checkout
-  $(document).on('click', '.pay', function () {
-    var checkbox_discounts = $('#discounts-checkbox').is(":checked");
+  $(document).on('click', '#pay', function () {
+    var discounts = $('#discounts-checkbox').is(":checked");
     var type = $('#type').is(":checked");
     var user_id = $('#name').val();
+
+    $('#cash').removeAttr('disabled');
+
 
     $.ajax({
       url: "../../app/controllers/admin/checkout/checkout.php",
       method: "POST",
       dataType: "json",
       data: {
-        checkbox_discounts: checkbox_discounts,
+        discounts: discounts,
         type: type,
         user_id: user_id
       },
       success: function (data) {
-
-
-        swal("Success!", 'nacheckout', "success");
+    
+        swal("Successful Payment!", "", "success");
+        window.location.href = 'cashier.php';
 
       }
     })

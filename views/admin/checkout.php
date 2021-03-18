@@ -81,13 +81,7 @@
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" id="invoice">
           <div class="card">
             <div class="header">
-              <h2>Invoice
-                <button type="button" id="print-invoice" class="btn bg-blue-grey btn-xs pull-right waves-effect">
-                  <i class="material-icons">print</i>
-                </button>
-
-              </h2>
-
+              <h2>Invoice</h2>
             </div>
             <div class="body">
               <div class="row clearfix">
@@ -120,23 +114,22 @@
               <h2>Payment</h2>
             </div>
             <div class="body">
-              <form method="post">
-                <label for="cash">Cash</label>
-                <div class="form-group">
-                  <div class="form-line">
-                    <input type="text" name="cash" id="cash" class="form-control" placeholder="Enter cash" disabled
-                      required>
-                  </div>
+              <label for="cash">Cash</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" name="cash" id="cash" class="form-control" placeholder="Enter cash" disabled
+                    required>
                 </div>
-                <label for="cash">Change</label>
-                <div class="form-group">
-                  <div class="form-line">
-                    <input type="text" name="change" id="change" value="0.00" class="form-control" disabled>
-                  </div>
-                  <br>
-                  <input type="button" name="pay-cash" id="pay" value="Pay" class="btn btn-primary pull-right pay" disabled>
+              </div>
+              <label for="cash">Change</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" name="change" id="change" value="0.00" class="form-control" disabled>
                 </div>
-              </form>
+                <br>
+                <input type="button" name="pay-cash" id="pay" value="Pay" class="btn btn-primary pull-right"
+                  disabled>
+              </div>
             </div>
           </div>
         </div>

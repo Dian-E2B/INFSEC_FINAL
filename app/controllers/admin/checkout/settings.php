@@ -17,12 +17,12 @@
   $subtotal = $cart['subtotal'];
   $vat = number_format($subtotal * 0.12, 2);
 
-  if ($_POST['checkbox_discounts'] == 'true') {
-    $discounts = $subtotal * 0.20;
+  if ($_POST['discounts'] == 'true') {
+    $discounts = number_format($subtotal * 0.20, 2);
     $vat = number_format(0 , 2);
   }
   
-  if ($_POST['checkbox_discounts'] == 'false') {
+  if ($_POST['discounts'] == 'false') {
     $discounts = number_format(0 , 2);
   }
 
