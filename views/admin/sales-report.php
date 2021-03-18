@@ -11,7 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <title>Admin | Inventory Report</title>
+  <title>Admin | Sales Report</title>
 
   <!-- links -->
   <?php include '../../public/admin/sections/links.php'; ?>
@@ -38,7 +38,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="card">
             <div class="header">
-              <h2>Inventory Report</h2>
+              <h2>Sales Report</h2>
             </div>
             <div class="body">
 
@@ -47,41 +47,36 @@
                   id="products-table">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Product Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Sold</th>
-                      <th>Supplier</th>
-                      <th>Category</th>
-                      <th>Date Added</th>
+                      <th>OrderID</th>
+                      <th>Name</th>
+                      <th>Discounts</th>
+                      <th>Total</th>
+                      <th>Payment Method</th>
+                      <th>Date Ordered</th>
                     </tr>
                   </thead>
                   <tbody>
-
                     <?php
 
-                      $query = "SELECT products.id, products.name, products.price, products.QuantityInStock, products.QuantitySold, supplier.name as 'supplier_name', category.name as 'category_name', products.date_added FROM products INNER JOIN category ON products.category_id = category.id INNER JOIN supplier ON products.supplier_id = supplier.id WHERE products.QuantityInStock > 0";
-
+                      $query = "SELECT orders.order_id, CONCAT(users.firstname, ' ', users.lastname) AS 'name',
+                      orders.discount, orders.total, orders.payment_method, orders.ordered_date FROM orders
+                      INNER JOIN users ON orders.user_id = users.id";
                       foreach (selectAll($query) as $row) { ?>
 
                     <tr>
-                      <td><?php echo $row['id']; ?></td>
-                      <td><?php echo $row['name']; ?></td>
-                      <td><?php echo $row['price']; ?></td>
                       <td>
-                        <span class="label bg-<?php echo ($row['QuantityInStock']<=30) ? 'red' : 'green'; ?>">
-                          <?php echo $row['QuantityInStock']; ?>
-                        </span>
+                        <a href="javascript:void(0);">
+                          <?php echo $row['order_id']; ?>
+                        </a>
                       </td>
-                      <td><?php echo $row['QuantitySold']; ?></td>
-                      <td><?php echo $row['supplier_name']; ?></td>
-                      <td><?php echo $row['category_name']; ?></td>
-                      <td><?php echo $row['date_added']; ?></td>
+                      <td><?php echo $row['name']; ?></td>
+                      <td><?php echo $row['discount']; ?></td>
+                      <td><?php echo $row['total']; ?></td>
+                      <td><?php echo $row['payment_method']; ?></td>
+                      <td><?php echo $row['ordered_date']; ?></td>
                     </tr>
 
                     <?php } ?>
-
                   </tbody>
                 </table>
               </div>
