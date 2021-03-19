@@ -9,6 +9,8 @@
     if ($_SESSION['user']['type'] != 1) {
       header('Location:../../');
     }
+  } else {
+    header('Location:../../');
   }
 
 

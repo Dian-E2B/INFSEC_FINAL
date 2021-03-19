@@ -4,7 +4,6 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
     type="text/css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
 <!-- Font Awesome Fonts -->
 <link href="../../public/admin/fonts/fontawesome-free-5.15.1/css/all.css" rel="stylesheet">
@@ -38,6 +37,7 @@
 
 <!-- Custom Css -->
 <link href="../../public/admin/css/style.css" rel="stylesheet">
+<link href="../../public/admin/css/material-icons.css" rel="stylesheet">
 
 <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
 <link href="../../public/admin/css/themes/all-themes.css" rel="stylesheet" />
