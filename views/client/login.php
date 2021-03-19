@@ -1,4 +1,16 @@
-<?php require '../../app/controllers/client/login.php'; ?>
+<?php
+    session_start();
+    
+  require '../../app/controllers/client/login.php';
+
+  if (isset($_SESSION['is_logged_in'])) {
+
+    if ($_SESSION['user']['type'] != 0) {
+      header('Location:../../views/admin');
+    }
+  }
+
+?>
 
 <!doctype html>
 <html lang="zxx">

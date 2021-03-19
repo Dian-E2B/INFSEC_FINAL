@@ -1,3 +1,17 @@
+<?php
+
+  session_start();
+
+  if (isset($_SESSION['is_logged_in'])) {
+    if ($_SESSION['user']['type'] != 1) {
+      header('Location:../../');
+    }
+  } else {
+    header('Location:../../');
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -53,7 +67,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
           <div class="card">
             <div class="header">
               <h2>Blocked Users</h2>
@@ -65,6 +79,7 @@
                     <tr>
                       <th>ID</th>
                       <th>Name</th>
+                      <th>Email</th>
                       <th class="text-center">Actions</th>
                     </tr>
                   </thead>
@@ -77,8 +92,25 @@
     </div>
   </section>
 
+  <!-- Modal -->
+  <div class="modal fade" id="modal-unblock" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure you want to unblock this user?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancel</button>
+          <button type="button" id="btn-unblock" class="btn bg-purple waves-effect">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- scripts -->
   <?php include '../../public/admin/sections/scripts.php'; ?>
+  <script src="../../public/admin/js/ajax/settings.js"></script>
+
 
 </body>
 

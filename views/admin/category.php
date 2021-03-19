@@ -1,3 +1,17 @@
+<?php
+
+  session_start();
+
+  if (isset($_SESSION['is_logged_in'])) {
+    if ($_SESSION['user']['type'] != 1) {
+      header('Location:../../');
+    }
+  } else {
+    header('Location:../../');
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 

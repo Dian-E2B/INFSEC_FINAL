@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   $('#action-add').click(function () {
-    $('#form-product')[0].reset();
+    $('#form_validation')[0].reset();
     $('#modal-title').text("New Product");
     $('#submit').val("ADD");
     $('#operation').val("Add");
@@ -9,6 +9,7 @@ $(document).ready(function () {
 
 
   var dataTable = $('#dt-products').DataTable({
+    "autoWidth": false,
     "processing": true,
     "serverSide": true,
     "order": [],
@@ -25,7 +26,7 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('submit', '#form-product', function (event) {
+  $(document).on('submit', '#form_validation', function (event) {
     event.preventDefault();
 
     var extension = $('#image').val().split('.').pop().toLowerCase();
@@ -62,7 +63,7 @@ $(document).ready(function () {
 
         }
 
-        $('#form-product')[0].reset();
+        $('#form_validation')[0].reset();
         $('#modal-product').modal('hide');
         dataTable.ajax.reload();
 

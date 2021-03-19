@@ -2,7 +2,17 @@
   include_once ('../../app/config/connection.php');
   include_once ('../../app/config/functions.php');
     
+
   session_start();
+
+  if (isset($_SESSION['is_logged_in'])) {
+    if ($_SESSION['user']['type'] != 1) {
+      header('Location:../../');
+    }
+  } else {
+    header('Location:../../');
+  }
+
 ?>
 
 <!DOCTYPE html>

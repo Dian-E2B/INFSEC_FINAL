@@ -1,13 +1,14 @@
 $(document).ready(function () {
 
   $('#action-add').click(function () {
-    $('#form-supplier')[0].reset();
+    $('.form-supplier')[0].reset();
     $('#modal-title').text("New Supplier");
     $('#submit').val("ADD");
     $('#operation').val("Add");
   });
 
   var dataTable = $('#dt-suppliers').DataTable({
+    "autoWidth": false,
     "processing": true,
     "serverSide": true,
     "order": [
@@ -28,7 +29,7 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('submit', '#form-supplier', function (event) {
+  $(document).on('submit', '.form-supplier', function (event) {
     event.preventDefault();
 
     $.ajax({
@@ -56,7 +57,7 @@ $(document).ready(function () {
 
         }
 
-        $('#form-supplier')[0].reset();
+        $('.form-supplier')[0].reset();
         $('#modal-supplier').modal('hide');
         dataTable.ajax.reload();
 

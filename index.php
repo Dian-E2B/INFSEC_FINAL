@@ -1,7 +1,16 @@
 <?php
 
 	require 'app/controllers/client/add-to-cart.php';
+
+  session_start();
+
+  $default_nav_item_status = null;
+  $nav_item_status = 'hidden';
+
   if (isset($_SESSION['is_logged_in'])) {
+    $default_nav_item_status = 'hidden';
+    $nav_item_status = null;
+
     if ($_SESSION['user']['type'] != 0) {
       header('Location:views/admin');
     }
@@ -64,10 +73,18 @@
                   <a class="nav-link" href="views/client/shop.php">Shop</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="views/client/login.php">Login</a>
+                  <a class="nav-link" href="#" <?php echo $nav_item_status; ?>>
+                    <?php echo $_SESSION['user']['firstname'] . ' ' . $_SESSION['user']['lastname']; ?>
+                  </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="views/client/register.php">Create Account</a>
+                  <a class="nav-link" href="app/controllers/client/logout.php" <?php echo $nav_item_status; ?>>Logout</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="views/client/login.php" <?php echo $default_nav_item_status; ?>>Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="views/client/register.php" <?php echo $default_nav_item_status; ?>>Create Account</a>
                 </li>
               </ul>
             </div>
@@ -75,7 +92,7 @@
               <div class="dropdown cart">
                 <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  <a href="cart1.html">
+                  <a href="views/client/cart.php">
                     <i class="ti-bag"></i>
                   </a>
                 </a>
@@ -116,7 +133,7 @@
 
         <?php
         try {
-          $query = "SELECT * FROM products WHERE QuantityInStock > 0 ORDER BY date_added DESC LIMIT 3";
+          $query = "SELECT * FROM products WHERE QuantityInStock > 0 LIMIT 3";
           foreach (selectAll($query) as $row) { ?>
 
         <div class="col-lg-4 col-sm-4">

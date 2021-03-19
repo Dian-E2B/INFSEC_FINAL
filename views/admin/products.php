@@ -1,3 +1,17 @@
+<?php
+
+  session_start();
+
+  if (isset($_SESSION['is_logged_in'])) {
+    if ($_SESSION['user']['type'] != 1) {
+      header('Location:../../');
+    }
+  } else {
+    header('Location:../../');
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -65,7 +79,7 @@
   <div class="modal fade" id="modal-product" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <form method="post" id="form-product">
+        <form method="post" id="form_validation" class="form-product">
           <div class="modal-header">
             <h4 class="modal-title" id="modal-title">New Product</h4>
           </div>
@@ -73,26 +87,26 @@
             <label class="form-label">Name</label>
             <div class="form-group">
               <div class="form-line">
-                <input type="text" id="name" name="name" class="form-control">
+                <input type="text" id="name" name="name" class="form-control" required minlength="2" maxlength="50">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Description</label>
               <div class="form-line">
                 <textarea rows="1" id="description" name="description" class="form-control no-resize auto-growth"
-                  style="overflow: hidden; overflow-wrap: break-word; height: 35px;"></textarea>
+                  style="overflow: hidden; overflow-wrap: break-word; height: 35px;" required></textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Price</label>
               <div class="form-line">
-                <input type="text" id="price" name="price" class="form-control">
+                <input type="number" id="price" name="price" class="form-control" required>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Quantity</label>
               <div class="form-line">
-                <input type="text" id="quantity" name="quantity" class="form-control">
+                <input type="number" id="quantity" name="quantity" class="form-control" required>
               </div>
             </div>
             <div class="form-group">
@@ -107,6 +121,7 @@
                 </option>
                 <?php endforeach; ?>
               </select>
+              <div class="help-info">(Optional)</div>
             </div>
             <div class="form-group">
               <label class="form-label">Supplier</label>
@@ -118,11 +133,12 @@
                 </option>
                 <?php endforeach; ?>
               </select>
+              <div class="help-info">(Optional)</div>
             </div>
             <div class="form-group">
               <label class="form-label">Image</label>
               <input type="file" id="image" name="image" class="form-control">
-
+              <div class="help-info">(Optional)</div>
             </div>
           </div>
           <div class="modal-footer">

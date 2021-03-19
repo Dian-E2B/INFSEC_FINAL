@@ -2,8 +2,6 @@
   include_once ('../../app/config/connection.php');
   include_once ('../../app/config/functions.php');
 
-  session_start();
-
   $message = "";
 
   if (isset($_POST['login'])) {

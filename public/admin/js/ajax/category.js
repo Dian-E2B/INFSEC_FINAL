@@ -8,6 +8,7 @@ $(document).ready(function () {
   });
 
   var dataTable = $('#dt-category').DataTable({
+    "autoWidth": false,
     "processing": true,
     "serverSide": true,
     "order": [

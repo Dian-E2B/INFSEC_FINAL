@@ -3,8 +3,6 @@
   include_once ('app/config/connection.php');
   include_once ('app/config/functions.php');
 
-session_start();
-
 try {
 
 	if (isset($_SESSION['is_logged_in'])) {
