@@ -4,9 +4,9 @@
     </div>
     <div class="info-container">
         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Jervey Pamad
+            <?php echo $_SESSION['user']['firstname'] . ' ' . $_SESSION['user']['lastname']; ?>
         </div>
-        <div class="email">pamad@gmail.com</div>
+        <div class="email"><?php echo $_SESSION['user']['email']; ?></div>
         <div class="btn-group user-helper-dropdown">
             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="true">keyboard_arrow_down</i>
@@ -15,8 +15,8 @@
                     <a href="#"><i class="material-icons">person</i>Profile</a>
                 </li>
                 <li>
-                    <a href="../application/controllers/signout.php">
-                        <i class="material-icons">input</i>Sign Out
+                    <a href="../../app/controllers/admin/logout.php">
+                        <i class="material-icons">input</i>Logout
                     </a>
                 </li>
             </ul>

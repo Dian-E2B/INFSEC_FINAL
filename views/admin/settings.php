@@ -41,13 +41,35 @@
                 </div>
               </form>
 
-              <form method="post" action="../../app/controllers/admin/backup-restore/restore.php" enctype="multipart/form-data">
+              <form method="post" action="../../app/controllers/admin/backup-restore/restore.php"
+                enctype="multipart/form-data">
                 <div class="form-group mt-2">
                   <label for="exampleFormControlFile1">Import SQL File:</label>
                   <input type="file" name="database-file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
                 <input type="submit" name="restore" value="Restore" class="form-control btn bg-purple mt-2">
               </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="header">
+              <h2>Blocked Users</h2>
+            </div>
+            <div class="body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dt-blocked-users">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
             </div>
           </div>
         </div>

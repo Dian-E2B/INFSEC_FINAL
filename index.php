@@ -1,6 +1,11 @@
 <?php
 
 	require 'app/controllers/client/add-to-cart.php';
+  if (isset($_SESSION['is_logged_in'])) {
+    if ($_SESSION['user']['type'] != 0) {
+      header('Location:views/admin');
+    }
+  }
 
 ?>
 

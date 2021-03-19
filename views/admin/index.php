@@ -3,6 +3,15 @@
   include_once ('../../app/config/connection.php');
   include_once ('../../app/config/functions.php');
 
+  session_start();
+
+ if (isset($_SESSION['is_logged_in'])) {
+    if ($_SESSION['user']['type'] != 1) {
+      header('Location:../../');
+    }
+  }
+
+
   //Total No. of Products
   $no_of_products = rowCount('SELECT * FROM products');
   //Total No. of Suppliers
@@ -63,7 +72,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-light-green">
+          <div class="info-box bg-green">
             <div class="icon">
               <i class="material-icons">local_shipping</i>
             </div>
@@ -146,7 +155,7 @@
         <!-- Salable Products -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           <div class="card">
-            <div class="body bg-light-green">
+            <div class="body bg-green">
               <div class="font-bold m-b--35">Salable Products</div>
               <ul class="dashboard-stat-list">
                 <?php
