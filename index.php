@@ -78,25 +78,25 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="app/controllers/client/logout.php" <?php echo $nav_item_status; ?>>Logout</a>
+                  <a class="nav-link" href="app/controllers/client/logout.php"
+                    <?php echo $nav_item_status; ?>>Logout</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="views/client/login.php" <?php echo $default_nav_item_status; ?>>Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="views/client/register.php" <?php echo $default_nav_item_status; ?>>Create Account</a>
+                  <a class="nav-link" href="views/client/register.php" <?php echo $default_nav_item_status; ?>>Create
+                    Account</a>
                 </li>
               </ul>
             </div>
             <div class="hearer_icon d-flex">
-              <div class="dropdown cart">
                 <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   <a href="views/client/cart.php">
                     <i class="ti-bag"></i>
                   </a>
                 </a>
-              </div>
             </div>
           </nav>
         </div>
