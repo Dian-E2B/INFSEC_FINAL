@@ -1862,10 +1862,10 @@
 
 .bg-purple {
   background-color: #9C27B0 !important;
-  color: #fff; }
+  color: rgb(220, 220, 220); }
   .bg-purple .content .text,
   .bg-purple .content .number {
-    color: #fff !important; }
+    color: rgb(220, 220, 220) !important; }
 
 .bg-deep-purple {
   background-color: #673AB7 !important;
@@ -5906,7 +5906,7 @@ fieldset[disabled] .form-control {
   color: #bbb; }
 
 .pagination li.active a {
-  background-color: #2196F3; }
+  background-color: #9c27b0; }
 
 .pagination li {
   -webkit-border-radius: 0;

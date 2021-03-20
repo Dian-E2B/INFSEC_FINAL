@@ -108,7 +108,7 @@
                         <span id="cart-total"></span>
                       </p>
                     </div>
-                    <a href="checkout.php" id="proceed-to-checkout" class="btn btn-primary pull-right" disabled>
+                    <a href="checkout.php" id="proceed-to-checkout" class="btn bg-purple pull-right" disabled>
                       Proceed to Checkout
                     </a>
                   </div>
@@ -141,7 +141,7 @@
             <input type="hidden" name="id" id="id">
             <input type="hidden" name="operation" id="operation">
             <input type="button" class="btn btn-link waves-effect" data-dismiss="modal" value="CLOSE">
-            <input type="submit" class="btn btn-info waves-effect" name="submit" id="submit" value="Add to Cart">
+            <input type="submit" class="btn bg-purple waves-effect" name="submit" id="submit" value="Add to Cart">
           </div>
         </form>
       </div>

@@ -63,7 +63,7 @@
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="../../public/client/img/arrivel/arrivel_1.png" alt="" />
+                      <img src="../../public/admin/images/products/121453666.webp" alt="" />
                     </div>
                     <div class="media-body">
                       <p>Minimalistic shop for multipurpose use</p>
@@ -88,7 +88,7 @@
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="../../public/client/img/arrivel/arrivel_2.png" alt="" />
+                      <img src="../../public/admin/images/products/373714332.webp" alt="" />
                     </div>
                     <div class="media-body">
                       <p>Minimalistic shop for multipurpose use</p>

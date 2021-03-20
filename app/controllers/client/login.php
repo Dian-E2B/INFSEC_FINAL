@@ -20,7 +20,7 @@
         'password' => $password
       ];
 
-      $query = "SELECT * FROM users WHERE email=:email AND password=:password";
+      $query = "SELECT * FROM users WHERE email=:email AND password=:password AND attempts < 3";
       $is_user_found = login($query, $data);
 
       if ($is_user_found) {

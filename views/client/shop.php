@@ -80,226 +80,94 @@
             <div class="col-lg-12">
               <div class="product_top_bar d-flex justify-content-between align-items-center">
                 <div class="single_product_menu product_bar_item">
-                  <h2>Womans (12)</h2>
+                  <h2>Auto Parts</h2>
                 </div>
               </div>
             </div>
+
+            <?php
+
+              try {
+
+                include_once ('../../app/config/connection.php');
+                include_once ('../../app/config/functions.php');
+
+                  $page = 1;
+                  $hide = null;
+                  $total_no_per_page = 12;
+
+                  $total_products = rowCount('SELECT * FROM products');
+                  $total_pages = ceil($total_products/$total_no_per_page);
+
+                  if (isset($_GET['page-no'])) {
+                      $page = $_GET['page-no'];
+                  } elseif (isset($_GET['prev'])) {
+                      $page = $_GET['prev'] - 1;
+                      if ($page == 0) {
+                          $page++;
+                      }
+                  } elseif (isset($_GET['next'])) {
+                      $page = $_GET['next'] + 1;
+                      if (($page - 1) == $total_pages) {
+                          $page--;
+                      }
+                  }
+
+                  $startAt = ($page - 1) * $total_no_per_page;
+
+                  if (isset($_POST['search'])) {
+                      $product_name = $_POST['search-product'];
+                      if (!empty($product_name)) {
+                          $hide = 'hidden';
+                          $query = "SELECT * FROM products WHERE QuantityInStock > 0 AND name LIKE '%" . $product_name . "%'";
+                      } else {
+                          $page = 1;
+                          $query = "SELECT * FROM products WHERE QuantityInStock > 0 LIMIT ". $total_no_per_page ."";
+                      }
+                  } else {
+                      $query = "SELECT * FROM products WHERE QuantityInStock > 0 LIMIT ". $startAt .", ". $total_no_per_page ."";
+                  }
+
+                  $rows = selectAll($query);
+                  foreach ($rows as $row) {
+                      $name = $row['name'];
+                      $name = strlen($name) > 25 ? substr($name,0,25) . "..." :   $name;
+              ?>
+
             <div class="col-lg-4 col-sm-6">
               <div class="single_category_product">
                 <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_1.png" alt="">
+                  <img src="../../public/admin/images/products/<?php echo $row['image']; ?>" alt="">
                   <div class="category_social_icon">
                     <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
+                      <li>
+                        <a href="product-details.php?product_id=<?php echo $row['id']; ?>"><i class="ti-bag"></i></a>
+                      </li>
                     </ul>
                   </div>
                   <div class="category_product_text">
                     <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
+                      <h5><?php echo $name; ?></h5>
                     </a>
-                    <p>$150.00</p>
+                    <p>PHP <?php echo number_format($row['price'], 2); ?></p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_2.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_3.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_4.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_5.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_6.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html"><a href="single-product.html">
-                        <h5>Long Sleeve TShirt</h5>
-                      </a></a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_7.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_8.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_9.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_10.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_11.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-              <div class="single_category_product">
-                <div class="single_category_img">
-                  <img src="../../public/client/img/category/category_12.png" alt="">
-                  <div class="category_social_icon">
-                    <ul>
-                      <li><a href="#"><i class="ti-bag"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="category_product_text">
-                    <a href="single-product.html">
-                      <h5>Long Sleeve TShirt</h5>
-                    </a>
-                    <p>$150.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            <?php
+                    }
+                } catch (PDOException $e) {
+                    echo "There is some problem in connection: " . $e->getMessage();
+                }
+
+                ?>
+
+
+
+
+
+
             <div class="col-lg-12 text-center">
               <a href="#" class="btn_2">
                 < Prev</a>

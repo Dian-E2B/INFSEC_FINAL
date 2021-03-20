@@ -81,7 +81,7 @@
                       </div>
                     </div>
                   </p>
-                  <button type="submit" id="apply-changes" class="btn btn-primary pull-right">
+                  <button type="submit" id="apply-changes" class="btn bg-purple pull-right">
                     <i class="material-icons" style="font-size:1.6rem;">refresh</i>
                     Apply Changes
                   </button>
@@ -141,7 +141,7 @@
                   <input type="text" name="change" id="change" value="0.00" class="form-control" disabled>
                 </div>
                 <br>
-                <input type="button" name="pay-cash" id="pay" value="Pay" class="btn btn-primary pull-right"
+                <input type="button" name="pay-cash" id="pay" value="Pay" class="btn bg-purple pull-right"
                   disabled>
               </div>
             </div>
