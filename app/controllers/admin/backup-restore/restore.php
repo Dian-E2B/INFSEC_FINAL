@@ -1,6 +1,6 @@
 <?php 
 
-  $database = 'sim';
+  $database = 'sad';
 
   if ($_FILES["database-file"]["name"] != '') {
     $array = explode(".", $_FILES["database-file"]["name"]);

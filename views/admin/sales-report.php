@@ -68,10 +68,12 @@
                   <tbody>
                     <?php
 
-                      $query = "SELECT orders.order_id, CONCAT(users.firstname, ' ', users.lastname) AS 'name',
+                      try {
+                        $query = "SELECT orders.order_id, CONCAT(users.firstname, ' ', users.lastname) AS 'name',
                       orders.discount, orders.total, orders.payment_method, orders.ordered_date FROM orders
                       INNER JOIN users ON orders.user_id = users.id";
                       foreach (selectAll($query) as $row) { ?>
+
 
                     <tr>
                       <td>
@@ -86,7 +88,13 @@
                       <td><?php echo $row['ordered_date']; ?></td>
                     </tr>
 
-                    <?php } ?>
+                    <?php 
+                      }
+                    } catch (Throwable $th) {
+                      //throw $th;
+                    }
+                  ?>
+
                   </tbody>
                 </table>
               </div>

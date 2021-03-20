@@ -2,7 +2,7 @@
 
   date_default_timezone_set('Asia/Manila');
 
-  $database = 'sim';
+  $database = 'sad';
 
   // Get connection object and set the charset
   $conn = mysqli_connect('localhost', 'root', '', $database);
